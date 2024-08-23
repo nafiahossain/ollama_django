@@ -93,7 +93,7 @@ root/
       or,
      
       ```bash
-      pip install django psycopg2-binary sqlalchemy python-dotenv pillow requests
+      pip install django psycopg2-binary sqlalchemy python-dotenv requests
       ```
 
      Next, ensure that you have Ollama installed on your system. Ollama is required for running the gemma2 model, which is used in this project. To verify if Ollama is installed, run the following command:
@@ -113,7 +113,7 @@ root/
      Please note that it may take around 25-30 minutes to load and run the model.
 
      
-  4. **Set up environment variables**:
+  4. **Set up Cinfigurations and environment variables**:
   
       Ensure you have a .env (rename the .env.sample to .env, then add your credentials) file at the root of the Django project containing the following:
       
@@ -125,14 +125,22 @@ root/
       DB_PASSWORD=password
       DB_HOST=localhost
       DB_PORT=5433
-      
-      DATABASE_URL=postgresql://username:password@localhost:5433/yourdatabase
       ```
 
       **You can use the previously created database for the Django project to store the data migrated through this django project. So, no need to create a new database.**
       Ensure that your PostgreSQL server is running, and the database specified in the .env file exists.
+
+     Rename the config.py.sample to config.py. This config file include the `Property` model import from the `property_app` application's model. It also include the Ollama API url. The Ollama API URL is set to http://localhost:11434/api/generate by default. Modify the ollama_url variable in the `config.py` if your setup differs.
+
+     ```python
+     #config.py
+
+     from property_app.models import Property
+
+     OLLAMA_API_URL = 'http://localhost:11434/api/generate'
+     ```
      
-  5. **Integrating `property_app` from Another Django Project**
+  6. **Integrating `property_app` from Another Django Project**
 
      This project (ollama_django) utilizes the property_app from a different Django project located in the same directory (as shown in the [Project Structure](#project-structure)). Below are the steps and considerations for setting this up:
 
@@ -181,7 +189,7 @@ root/
 
         When running migrations for `ollama_django`, ensure that any migrations related to `property_app` are applied correctly. You may need to manually run migrations in the `property_app` directory or include them in your workflow.
 
-  6. **Run migrations**:
+  7. **Run migrations**:
   
       Apply the database migrations, this will create the Summary model:
       
@@ -190,7 +198,7 @@ root/
       python manage.py migrate
       ```
 
-  7. **Property rewriting command**:
+  8. **Property rewriting command**:
   
       Before running this command, make sure to keep the previous django folder and the ollama_django folder in the same directory (as shown in the [Project Structure](#project-structure)).
      
@@ -207,7 +215,7 @@ root/
         3. Generate a summary for each property
         4. Update the database with the new information
 
-  8. **Create an admin user** (Optional):
+  9. **Create an admin user** (Optional):
   
       To use the admin panel, First you’ll need to create a user who can login to the admin site. Run the following command:
         
@@ -217,7 +225,7 @@ root/
     
       Enter your desired username, email address, and password. You will be asked to enter your password twice, the second time as a confirmation of the first. Using this info, you can log in to the admin panel and       perform CRUD operation on the migrated data.
 
-  9. **Run the development server**:
+  10. **Run the development server**:
   
       Start the Django development server:
       
@@ -240,7 +248,7 @@ root/
 ## Configuration
 
 - The `property_app` app is external to this project, meaning any changes to it should be done carefully to avoid breaking dependencies. Make sure the directory structure remains consistent when deploying or sharing this project.
-- The Ollama API URL is set to http://localhost:11434/api/generate by default. Modify the ollama_url variable in the command if your setup differs.
+- The Ollama API URL is set to http://localhost:11434/api/generate by default. Modify the ollama_url variable in the `config.py` if your setup differs.
 - The AI model used is "gemma2:2b". You can change this in the generate_ollama method if needed.
 
 ## Error Handling
