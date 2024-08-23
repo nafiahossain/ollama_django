@@ -120,6 +120,4 @@ class Command(BaseCommand):
         if not new_title or not new_description:
             raise ValueError("Could not parse title and description from content")
         
-        return new_title, new_description
-
-    
+        return new_title, new_description    
