@@ -1,5 +1,5 @@
 from django.db import models
-from property_app.models import Property
+from config import Property
 
 
 class Summary(models.Model):

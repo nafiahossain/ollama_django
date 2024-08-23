@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from django.db import transaction
-from property_app.models import Property
+from config import Property, OLLAMA_API_URL
 from summary_app.models import Summary
 import requests
 import json
@@ -10,7 +10,7 @@ class Command(BaseCommand):
     help = 'Rewrites property information using Ollama API'
 
     def handle(self, *args, **options):
-        ollama_url = 'http://localhost:11434/api/generate'
+        ollama_url = OLLAMA_API_URL
 
         properties = Property.objects.all()
         for property in properties:
@@ -18,8 +18,10 @@ class Command(BaseCommand):
 
             # Rewrite title and description
             prompt = f"""
-            Please rewrite the following property title and description to make them more engaging, appealing, and descriptive. Ensure that the title is concise yet catchy, and that the description highlights the key features in a clear and compelling manner. 
-            Generate only one title and one description without adding any extra text, markdown formatting, or symbols. Always format your response strictly as follows: Title: and Description:
+            Please rewrite the following property title and description to make them more engaging, appealing, and descriptive. 
+            Ensure that the title is concise yet catchy, and that the description highlights the key features in a clear and compelling manner. 
+            Generate only one title and one description without adding any extra text, markdown formatting, or symbols. 
+            Always format your response strictly as follows: Title: and Description:
             
             Original Title: {property.title}
             Original Description: {property.description}
@@ -120,4 +122,6 @@ class Command(BaseCommand):
         if not new_title or not new_description:
             raise ValueError("Could not parse title and description from content")
         
-        return new_title, new_description    
+        return new_title, new_description
+
+    

@@ -6,5 +6,5 @@ from .models import Summary
 class LocationAdmin(admin.ModelAdmin):
     list_display = ('id', 'property', 'summary' , 'create_date', 'update_date')
     list_display_links = ('id', 'property')
-    search_fields = ['property', 'summary']
-
+    search_fields = ['id', 'summary']
+    list_filter = ['create_date']
