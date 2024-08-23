@@ -45,9 +45,6 @@ root/
 │   │   ├── models.py
 │   │   ├── tests.py
 │   │   ├── views.py
-│   │   └── templates/
-│   │       └── property_app/
-│   │           └── home.html
 │   ├── .env
 │   ├── .gitignore
 │   ├── manage.py
