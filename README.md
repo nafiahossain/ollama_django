@@ -263,7 +263,7 @@ root/
 ## Configuration
 
 - The `property_app` app is external to this project, meaning any changes to it should be done carefully to avoid breaking dependencies. Make sure the directory structure remains consistent when deploying or sharing this project.
-- The Ollama API URL is set to http://localhost:11434/api/generate by default. Modify the ollama_url variable in the `config.py` if your setup differs.
+- The Ollama API URL is set to http://localhost:11434/api/generate by default. Modify the OLLAMA_API_URL variable in the `config.py` if your setup differs.
 - The AI model used is "gemma2:2b". You can change this in the generate_ollama method if needed.
 
 ## Error Handling
