@@ -44,7 +44,7 @@ class Command(BaseCommand):
                 continue
 
             # Generate summary
-            summary_prompt = f"Summarize the following property information:\nTitle: {new_title}\nDescription: {new_description}\nRating: {property.rating}\nLocation: {property.locations}\nAmenities: {', '.join(str(a) for a in property.amenities.all())}"
+            summary_prompt = f"Summarize the following property information in a more engaging, appealing, and descriptive way without adding any extra text or symbols.:\nTitle: {new_title}\nDescription: {new_description}\nRating: {property.rating}\nLocation: {property.locations}\nAmenities: {', '.join(str(a) for a in property.amenities.all())}"
             summary_response = self.generate_ollama(ollama_url, summary_prompt)
             
             if not summary_response:
@@ -123,5 +123,3 @@ class Command(BaseCommand):
             raise ValueError("Could not parse title and description from content")
         
         return new_title, new_description
-
-    
