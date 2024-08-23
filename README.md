@@ -47,6 +47,7 @@ root/
 │   │   ├── views.py
 │   ├── .env
 │   ├── .gitignore
+│   ├── config.py
 │   ├── manage.py
 │   ├── requirements.txt
 │   └── README.md
