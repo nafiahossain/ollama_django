@@ -93,7 +93,7 @@ root/
       or,
      
       ```bash
-      pip install django psycopg2-binary sqlalchemy python-dotenv requests
+      pip install django psycopg2-binary sqlalchemy python-dotenv pillow requests
       ```
 
      Next, ensure that you have Ollama installed on your system. Ollama is required for running the gemma2 model, which is used in this project. To verify if Ollama is installed, run the following command:
@@ -208,7 +208,7 @@ root/
       Apply the database migrations, this will create the Summary model:
       
       ```bash
-      python manage.py makemigrations property_app
+      python manage.py makemigrations
       python manage.py migrate
       ```
 
@@ -218,7 +218,7 @@ root/
      
       If the scrapy image directory setup is done, then run this command to migrate data from the existing scrapy database:
 
-     ```bash
+      ```bash
       python manage.py generate_property_info
       ```
 
