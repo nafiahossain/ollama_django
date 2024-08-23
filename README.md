@@ -217,7 +217,7 @@ root/
   
       Before running this command, make sure to keep the previous django folder and the ollama_django folder in the same directory (as shown in the [Project Structure](#project-structure)).
      
-      If the scrapy image directory setup is done, then run this command to migrate data from the existing scrapy database:
+      If the directory setup is done, then run this command to generate new data from the existing database, please note that, It will take around 30-40 minutes to run this using the gemma1:2b model:
 
       ```bash
       python manage.py generate_property_info
