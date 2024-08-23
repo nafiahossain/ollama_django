@@ -62,7 +62,7 @@ root/
 
 - property_app/: Django app for managing property models
 - summary_app/: Django app for managing summary models
-- management/commands/rewrite_properties.py: Custom management command for property rewriting
+- management/commands/generate_property_info.py: Custom management command for property rewriting
 
 ## Setup Instructions
 
@@ -235,7 +235,7 @@ root/
     
       Visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to see the application. To perfrom CRUD operation on data, you'll need to log in to the admin panel which is [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/). 
 
-     - Output:
+   - Output:
 
         - Database: AI Generated data stored in 'yourdatabase', in the PostgreSQL database.
         - Django Admin Interface: AI Generated data can be seen on the admin interface.
