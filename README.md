@@ -52,9 +52,9 @@ root/
 │   └── README.md
 │
 └── django/
-│   └── property_app/    # The external Django app being integrated
-│       ├── models.py
-│       └── ...
+    └── property_app/    # The external Django app being integrated
+        ├── models.py
+        └── ...
     
 ```
 
