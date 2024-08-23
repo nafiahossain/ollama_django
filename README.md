@@ -177,7 +177,21 @@ root/
         sys.path.append('../django')
         ```
 
-     3. Reference `property_app` Models:
+        To examine that the path defined in sys.path.append is correct, you can check this in python shell this way:
+
+        ```bash
+        python manage.py shell
+        ```
+        Then in the shell:
+
+        ```python
+        from property_app.models import Property  # Import the Property model
+        Property.objects.all()  # Query all Property instances
+        ```
+
+        If you see no error, then the path definition is correct.
+        
+     4. Reference `property_app` Models:
 
         When using models from `property_app`, you can import them directly in your code:
 
@@ -185,7 +199,7 @@ root/
         from property_app.models import Property
         ```
      
-     4. Handle Migrations:
+     5. Handle Migrations:
 
         When running migrations for `ollama_django`, ensure that any migrations related to `property_app` are applied correctly. You may need to manually run migrations in the `property_app` directory or include them in your workflow.
 
